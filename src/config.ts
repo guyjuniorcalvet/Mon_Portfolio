@@ -1,49 +1,39 @@
 export const siteConfig = {
-  name: "Ryan Fitzgerald",
-  title: "Senior Software Engineer",
-  description: "Portfolio website of Ryan Fitzgerald",
+  name: "Guy Junior CALVET",
+  title: "Junior Data Engineering/Business Intelligence",
+  description: "Portfolio de Guy Junior CALVET",
   accentColor: "#1d4ed8",
   social: {
-    email: "your-email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
-    github: "https://github.com/RyanFitzgerald",
+    email: "juniorguycalvet.com",
+    linkedin: "https://www.linkedin.com/in/guyjuniorcalvet",
+    github: "https://github.com/guyjuniorcalvet",
   },
   aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
+        "Curieux, rigoureux et orienté résultats, je combine une formation en science des données et intelligence des affaires avec une expérience en service à la clientèle et en gestion de projet. Je m’intéresse particulièrement à l’analyse prédictive, à la visualisation de données et à l’optimisation de processus.Mon objectif est de bâtir une carrière où je peux contribuer à transformer les données en leviers stratégiques pour les organisations, tout en développant des projets concrets à impact réel.",
+  skills: ["Programmation Orientée Objets (POO)", "C++","HTML", "R", "Python", "Jira", "PowerBI", "Optimisation"],
   projects: [
     {
-      name: "AI Dev Roundup Newsletter",
+      name: "Classification-Clients-et-Images-avec-Reseaux-Neuronaux",
       description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Deux projets de classification avec des réseaux de neurones : un PMC avec Scikit-Learn pour des données tabulaires et des CNN avec TensorFlow/Keras pour des images.",
+      link: "https://github.com/guyjuniorcalvet/Reseaux_de_neurones_LM",
+      skills: ["JupyterNotebook", "Python", "TensorFlow", "Keras", "CNN", "VGG16", "Scikit-Learn"],
     },
     {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
+      name: "Rotaract_de_Delmas_Shiny",
       description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-    {
-      name: "ExtensionKit",
-      description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Application d'alimentation (Shiny) et de gestion de la base de données du Rotaract de Delmas connectée à leur Base de données MySQL (hébergée dans le cloud).",
+      link: "https://github.com/guyjuniorcalvet/Rotaract_delmas_Shiny",
+      skills: ["Rstudio", "R", "Shiny", "Pool", "Oracle","SQL", "MySQL", "Googlecloud", "Supabase"],
     },
   ],
   experience: [
     {
-      company: "Tech Company",
-      title: "Senior Software Engineer",
-      dateRange: "Jan 2022 - Present",
+      company: "Université du Québec à Chicoutimi",
+      title: "Stage-Projet été 2025",
+      dateRange: "8 semaines",
       bullets: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Reduced API response times by 40% through optimization",
-        "Mentored team of 5 junior developers",
+          "Projet de création d’une interface interactive et intuitive (Shiny) qui est connectée à la base de données MySQL d’une organisation communautaire basée en Haïti, le Rotaract Club Delmas.",
       ],
     },
     {
@@ -69,23 +59,21 @@ export const siteConfig = {
   ],
   education: [
     {
-      school: "University Name",
-      degree: "Bachelor of Science in Computer Science",
-      dateRange: "2014 - 2018",
+      school: "Université du Québec à Chicoutimi",
+      degree: "Baccalauréat en informatique-Sciences des données et de l'intelligence d'affaires",
+      dateRange: "2023 - 2026",
       achievements: [
-        "Graduated Magna Cum Laude with 3.8 GPA",
-        "Dean's List all semesters",
-        "President of Computer Science Club",
+        "Etudiant en dernière année",
+        "Membre de l'équipe de l'UQAC au CSGames25 à l'UlAVAL",
       ],
     },
     {
-      school: "Online Platform",
-      degree: "Full Stack Development Certificate",
-      dateRange: "2019",
+      school: "Université Notre Dame d'Haiti - FSESP",
+      degree: "Licence en Administration des affaires",
+      dateRange: "2017 - 2021",
       achievements: [
-        "Completed 500+ hours of coursework",
-        "Built 10+ portfolio projects",
-        "Specialized in React and Node.js",
+        "Moyenne générale de 80/100 avec plus de 120 crédits",
+        "Membre du comité des clubs d'Echecs, de lecture et du bénévolat",
       ],
     },
   ],
