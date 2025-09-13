@@ -4,14 +4,14 @@ export const siteConfig = {
   description: "Portfolio de Guy Junior CALVET",
   accentColor: "#1d4ed8",
   social: {
-    email: "juniorguycalvet.com",
+    email: "juniorguycalvet@gmail.com",
     linkedin: "https://www.linkedin.com/in/guyjuniorcalvet",
     github: "https://github.com/guyjuniorcalvet",
   },
-  A_propos_de_moi:
+  AboutMe:
         "Curieux, rigoureux et oriente resultats, je combine une formation en science des donnees et intelligence des affaires avec une experience en service a la clientele et en gestion de projet. Je m’interesse particulierement a l’analyse predictive, a la visualisation de donnees et a l’optimisation de processus.Mon objectif est de batir une carriere ou je peux contribuer a transformer les donnees en leviers strategiques pour les organisations, tout en developpant des projets concrets a impact reel.",
   skills: ["Programmation Orientée Objets (POO)", "C++","HTML", "R", "Python", "Jira", "PowerBI", "Optimisation"],
-  projets: [
+  projects: [
     {
       name: "Classification-Clients-et-Images-avec-Reseaux-Neuronaux",
       description:
@@ -52,7 +52,7 @@ export const siteConfig = {
       degree: "Licence en Administration des affaires",
       dateRange: "2017 - 2021",
       achievements: [
-        "Moyenne generale de 80/100 avec plus de 120 crédits",
+        "Moyenne genérale de 80/100 avec plus de 120 crédits",
         "Membre du comité des clubs d'Echecs, de lecture et du bénévolat",
       ],
     },
