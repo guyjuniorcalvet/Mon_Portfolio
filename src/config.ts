@@ -8,8 +8,8 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/guyjuniorcalvet",
     github: "https://github.com/guyjuniorcalvet",
   },
-  AboutMe:
-        "Curieux, rigoureux et oriente resultats, je combine une formation en science des donnees et intelligence des affaires avec une experience en service a la clientele et en gestion de projet. Je m’interesse particulierement a l’analyse predictive, a la visualisation de donnees et a l’optimisation de processus.Mon objectif est de batir une carriere ou je peux contribuer a transformer les donnees en leviers strategiques pour les organisations, tout en developpant des projets concrets a impact reel.",
+  aboutMe:
+    "Curieux, rigoureux et oriente resultats, je combine une formation en science des donnees et intelligence des affaires avec une experience en service a la clientele et en gestion de projet. Je m’interesse particulierement a l’analyse predictive, a la visualisation de donnees et a l’optimisation de processus.Mon objectif est de batir une carriere ou je peux contribuer a transformer les donnees en leviers strategiques pour les organisations, tout en developpant des projets concrets a impact reel.",
   skills: ["Programmation Orientée Objets (POO)", "C++","HTML", "R", "Python", "Jira", "PowerBI", "Optimisation"],
   projects: [
     {
