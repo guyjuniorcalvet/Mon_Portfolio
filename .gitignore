@@ -1,0 +1,5 @@
+# Ignore Streamlit secrets file
+.streamlit/secrets.toml
+
+# Ignore system files
+.DS_Store
