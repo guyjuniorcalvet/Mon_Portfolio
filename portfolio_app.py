@@ -62,8 +62,8 @@ content_fr = {
     "project5_info": "Ceci est un emplacement réservé. Vous pouvez le modifier pour ajouter votre troisième projet.",
     
     "chatbot_header": "Pourquoi m'embaucher ?",
-    "chatbot_description": "Téléversez la description d'un poste et l'IA vous expliquera pourquoi je suis le candidat idéal.",
-    "job_description_label": "Collez la description du poste ici...",
+    "chatbot_description": "Décrivez le poste en question et l'IA vous expliquera pourquoi je suis le candidat idéal.",
+    "job_description_label": "Écrivez ou collez la description du poste ici...",
     "analyze_button": "Analyser",
     "analysis_result_header": "Analyse de ma candidature",
 }
@@ -93,8 +93,8 @@ content_en = {
     "project3_link": "https://github.com/users/casstoipaslatete/projects/1/views/1",
 
     "chatbot_header": "Why Hire Me?",
-    "chatbot_description": "Upload a job description and the AI will explain why I am the ideal candidate.",
-    "job_description_label": "Paste the job description here...",
+    "chatbot_description": "Describe the job and the AI will explain why I am the ideal candidate.",
+    "job_description_label": "Write or paste the job description here...",
     "analyze_button": "Analyze",
     "analysis_result_header": "My Candidacy Analysis",
 }
