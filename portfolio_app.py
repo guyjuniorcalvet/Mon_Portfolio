@@ -2,6 +2,7 @@ import streamlit as st
 from textblob import TextBlob
 from textblob_fr import PatternTagger, PatternAnalyzer
 import os
+import openai
 
 # --- GET CWD ---
 CWD = os.path.dirname(__file__)
@@ -59,16 +60,12 @@ content_fr = {
     "project5_desc": "Description de votre projet ici. Expliquez le problème que vous avez résolu et votre solution.",
     "project5_tech": "Python, Streamlit, ...",
     "project5_info": "Ceci est un emplacement réservé. Vous pouvez le modifier pour ajouter votre troisième projet.",
-    "project_header": "Projet Interactif : Analyseur de Sentiments",
-    "project_description": "Entrez une phrase et l'IA analysera si le sentiment est positif, négatif ou neutre.",
-    "text_input_label": "Votre texte ici...",
+    
+    "chatbot_header": "Pourquoi m'embaucher ?",
+    "chatbot_description": "Téléversez la description d'un poste et l'IA vous expliquera pourquoi je suis le candidat idéal.",
+    "job_description_label": "Collez la description du poste ici...",
     "analyze_button": "Analyser",
-    "analysis_result_header": "Résultat de l'analyse",
-    "sentiment_label": "Sentiment détecté",
-    "subjectivity_label": "Subjectivité",
-    "positive": "Positif",
-    "negative": "Négatif",
-    "neutral": "Neutre",
+    "analysis_result_header": "Analyse de ma candidature",
 }
 
 content_en = {
@@ -95,16 +92,11 @@ content_en = {
     "project3_tech": "Backend = Node.js, Express, MongoDB // Frontend = HTML, CSS, JavaScript",
     "project3_link": "https://github.com/users/casstoipaslatete/projects/1/views/1",
 
-    "project_header": "Interactive Project: Sentiment Analyzer",
-    "project_description": "Enter a sentence and the AI will analyze if the sentiment is positive, negative, or neutral.",
-    "text_input_label": "Your text here...",
+    "chatbot_header": "Why Hire Me?",
+    "chatbot_description": "Upload a job description and the AI will explain why I am the ideal candidate.",
+    "job_description_label": "Paste the job description here...",
     "analyze_button": "Analyze",
-    "analysis_result_header": "Analysis Result",
-    "sentiment_label": "Detected Sentiment",
-    "subjectivity_label": "Subjectivity",
-    "positive": "Positive",
-    "negative": "Negative",
-    "neutral": "Neutral",
+    "analysis_result_header": "My Candidacy Analysis",
 }
 
 content = content_fr if lang == "fr" else content_en
@@ -163,39 +155,85 @@ with st.container():
         st.write(f"**Technologies:** {content['project3_tech']}")
         st.link_button(content["project_link_button"], content["project3_link"])
 
-# --- INTERACTIVE PROJECT SECTION ---
+# --- CHATBOT SECTION ---
 with st.container():
     st.write("---")
-    st.header(content["project_header"])
-    st.write(content["project_description"])
+    st.header(content["chatbot_header"])
+    st.write(content["chatbot_description"])
 
-    user_text = st.text_area(label=content["text_input_label"], height=100)
+    job_description = st.text_area(label=content["job_description_label"], height=200)
 
     if st.button(content["analyze_button"]):
-        if user_text:
-            st.subheader(content["analysis_result_header"])
-            
-            if lang == 'fr':
-                blob = TextBlob(user_text, pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
-                polarity = blob.sentiment[0]
-            else:
-                blob = TextBlob(user_text)
-                polarity = blob.sentiment.polarity
+        if job_description:
+            with st.spinner("Analyse en cours..."):
+                # --- USER PROFILE ---
+                user_profile = """
+                **Profil :**
+                Étudiant en Baccalauréat en informatique - science des données et de l'intelligence d'affaires, passionné par la conception de solutions logicielles modernes pour résoudre des problèmes complexes. Je m'intéresse particulièrement à la mise en place de pratiques DevOps et à la sécurisation des applications pour garantir la protection des données.
 
-            if polarity > 0.1:
-                sentiment = f"✅ {content['positive']}"
-            elif polarity < -0.1:
-                sentiment = f"❌ {content['negative']}"
-            else:
-                sentiment = f"😐 {content['neutral']}"
+                **Compétences Techniques :**
+                - Méthodologies : Agile (Scrum), POO, Cycle de développement de Logiciel (SDLC)
+                - Gestion de bases de données : SQL, Oracle
+                - Outils : Visual Studio 2022, Git
+                - Langages : Python, R, C++
+                - Spécialisation : Structuration de pipelines de données
 
-            st.write(f"**{content['sentiment_label']}:** {sentiment}")
-            
-            if lang == 'en': # Subjectivity is more reliable for English with TextBlob
-                 st.write(f"**{content['subjectivity_label']}:** {blob.sentiment.subjectivity:.2f}")
+                **Expérience Professionnelle :**
+                - **Stage universitaire / Superviseur : Aurélien Nicosia (06/2025 - 07/2025) :** Création d'une interface interactive et intuitive (Shiny) connectée à une base de données MySQL pour une organisation communautaire en Haïti (Rotaract Club Delmas).
+                - **Flex driver / FEDEX (Depuis 05/2024) :** Chauffeur de courrier à temps partiel.
 
+                **Formation :**
+                - **Bacc en Informatique-Scs des données et de l'intelligence d'affaires, UQAC (2023 - 2026)**
+                - **Licence en Administration des affaires, Université Notre Dame d'Haïti (2017 - 2021)**
+
+                **Activités :**
+                - Participation aux CSGAMES25 à l'ULaval.
+                - Membre du club Rotaract de Delmas depuis Mars 2020.
+
+                **Objectifs de Carrière et Personnalité :**
+                - **Objectif :** Recherche un poste (stage ou emploi) qui contribue à mes études, avec une préférence pour le développement d'applications et de logiciels, idéalement dans le secteur de la finance.
+                - **Personnalité :** Autonome, dynamique, très collaboratif et motivé par l'apprentissage continu.
+                - **Approche :** Je vois les difficultés comme des défis à affronter de manière structurée, étape par étape.
+                - **Localisation :** Ouvert à toute opportunité, avec une préférence pour Saguenay ou la ville de Québec. Télétravail bienvenu.
+                """
+
+                # --- PROMPT FOR OPENAI ---
+                prompt = f"""
+                Tu es un assistant IA expert en recrutement. Ton rôle est d'agir comme si tu étais Guy Junior CALVET et de rédiger une lettre de motivation courte et percutante.
+                Analyse la description de poste suivante et utilise les informations du profil de Guy Junior CALVET pour expliquer pourquoi il est le candidat idéal.
+
+                **Profil de Guy Junior CALVET :**
+                {user_profile}
+
+                **Description du poste :**
+                {job_description}
+
+                **Instructions :**
+                1.  Commence par une phrase d'accroche qui montre que tu as compris le besoin de l'entreprise.
+                2.  Mets en évidence 2 ou 3 compétences ou expériences clés du profil de Guy qui correspondent PARFAITEMENT à l'offre.
+                3.  Mentionne sa motivation et ses qualités personnelles (soft skills) en lien avec le poste ou l'entreprise.
+                4.  Si la localisation du poste correspond aux préférences de Guy (Saguenay, Québec, ou télétravail), mentionne-le comme un atout.
+                5.  Conclus par une phrase enthousiaste pour proposer un entretien.
+                6.  La réponse doit être rédigée à la première personne ("Je", "Mon", "Ma").
+                7.  Sois concis, professionnel et convaincant.
+                """
+
+                try:
+                    openai.api_key = st.secrets["OPENAI_API_KEY"]
+                    response = openai.chat.completions.create(
+                        model="gpt-3.5-turbo",
+                        messages=[
+                            {"role": "system", "content": "Tu es un assistant IA expert en recrutement agissant au nom de Guy Junior CALVET."},
+                            {"role": "user", "content": prompt}
+                        ]
+                    )
+                    st.subheader(content["analysis_result_header"])
+                    st.success(response.choices[0].message.content)
+                except Exception as e:
+                    st.error(f"Une erreur est survenue : {e}")
         else:
-            st.warning("Please enter some text to analyze.")
+            st.warning("Veuillez coller une description de poste pour l'analyse.")
+
 
 # --- FOOTER ---
 st.write("---")
