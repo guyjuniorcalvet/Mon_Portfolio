@@ -21,4 +21,4 @@ This portfolio was built with Python and Streamlit to showcase my skills in a li
 
 ## Live Application
 
-You can view the live application here: [Link to your deployed Streamlit app]
+You can view the live application here: https://guyjcmonportfolio.streamlit.app/
